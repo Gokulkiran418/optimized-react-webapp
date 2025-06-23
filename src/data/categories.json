@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "title": "Singers",
+    "image": "/images/singers.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Dancers",
+    "image": "/images/dancers.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Speakers",
+    "image": "/images/speakers.jpg"
+  },
+  {
+    "id": "4",
+    "title": "DJs",
+    "image": "/images/djs.jpg"
+  }
+]
