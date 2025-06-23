@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "name": "Aria Smith",
+    "category": "Singers",
+    "city": "Mumbai",
+    "fee": 30000
+  },
+  {
+    "id": "2",
+    "name": "Rhythm Beats",
+    "category": "DJs",
+    "city": "Delhi",
+    "fee": 50000
+  }
+]

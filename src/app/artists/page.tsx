@@ -8,11 +8,6 @@ import FilterBlock from '@/components/FilterBlock'
 import type { Artist } from '@/types/artist'
 import artistsData from '@/data/artists.json'
 
-export const metadata: Metadata = {
-  title: 'Artistly – Browse Artists',
-  description: 'Filter and browse performing artists by category, location, and fee.',
-}
-
 // Dynamically import FixedSizeGrid
 const FixedSizeGrid = dynamic(
   async () => {

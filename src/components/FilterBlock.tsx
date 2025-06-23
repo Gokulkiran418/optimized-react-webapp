@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useCallback } from 'react'
+import { useState, useMemo, useCallback, useEffect } from 'react'
 import type { Artist } from '@/types/artist'
 
 type FilterBlockProps = {
@@ -13,13 +13,15 @@ export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
   const [location, setLocation] = useState('')
   const [price, setPrice] = useState('')
 
-  const uniqueCategories = useMemo(() => {
-    return Array.from(new Set(artists.map((a) => a.category)))
-  }, [artists])
+  const uniqueCategories = useMemo(
+    () => Array.from(new Set(artists.map((a) => a.category))),
+    [artists]
+  )
 
-  const uniqueLocations = useMemo(() => {
-    return Array.from(new Set(artists.map((a) => a.location)))
-  }, [artists])
+  const uniqueLocations = useMemo(
+    () => Array.from(new Set(artists.map((a) => a.location))),
+    [artists]
+  )
 
   const priceRanges = ['< ₹5000', '₹5000 - ₹10000', '> ₹10000']
 
@@ -42,7 +44,8 @@ export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
     onFilter(result)
   }, [artists, category, location, price, onFilter])
 
-  useMemo(() => {
+  // ✅ Correct side-effect usage
+  useEffect(() => {
     filterArtists()
   }, [filterArtists])
 
