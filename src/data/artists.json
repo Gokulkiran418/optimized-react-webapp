@@ -1,0 +1,51 @@
+[
+  {
+    "id": "1",
+    "name": "Aria Smith",
+    "category": "Singer",
+    "location": "Mumbai",
+    "fee": 30000,
+    "image": "/images/artists/ariasmith.jpg"
+  },
+   {
+    "id": "2",
+    "name": "Adam",
+    "category": "Singer",
+    "location": "Delhi",
+    "fee": 20000,
+    "image": "/images/artists/adam.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Rhythm Beats",
+    "category": "DJs",
+    "location": "Delhi",
+    "fee": 50000,
+    "image": "/images/artists/rhythmbeats.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Kassandra",
+    "category": "DJs",
+    "location": "Delhi",
+    "fee": 30000,
+    "image": "/images/artists/kassandra.jpg"
+  },
+  {
+    "id": "5",
+    "name": "DragonFly Dance Group",
+    "category": "Dancer",
+    "location": "Delhi",
+    "fee": 60000,
+    "image": "/images/artists/Dragonflydance.jpg"
+  },
+  {
+    "id": "6",
+    "name": "Zoya",
+    "category": "Dancer",
+    "location": "Delhi",
+    "fee": 30000,
+    "image": "/images/artists/zoya.jpg"
+  }
+  
+]
