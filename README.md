@@ -121,7 +121,7 @@ artistly/
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/your-username/artistly.git
+git clone https://github.com/Gokulkiran418/optimized-react-webapp.git
 cd artistly
 npm install
 npm run dev
