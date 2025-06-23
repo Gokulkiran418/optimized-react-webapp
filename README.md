@@ -4,7 +4,7 @@ Artistly is a modern, responsive, and performant web application built with **Ne
 
 ## 🚀 Live Demo
 
-[https://artistly.vercel.app](https://artistly.vercel.app)
+### GOING TO DEPLOY IN A WHILE
 
 ---
 
