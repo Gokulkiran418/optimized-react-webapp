@@ -23,19 +23,19 @@ export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
     [artists]
   )
 
-  const priceRanges = ['< ₹5000', '₹5000 - ₹10000', '> ₹10000']
+  const priceRanges = ['< ₹15000', '₹10000 - ₹20000', '> ₹20000']
 
   const filterArtists = useCallback(() => {
     const result = artists.filter((a) => {
       const matchCategory = category ? a.category === category : true
       const matchLocation = location ? a.location === location : true
       const matchPrice =
-        price === '< ₹5000'
-          ? a.fee <= 5000
-          : price === '₹5000 - ₹10000'
-          ? a.fee > 5000 && a.fee <= 10000
-          : price === '> ₹10000'
-          ? a.fee > 10000
+        price === '< ₹15000'
+          ? a.fee <= 15000
+          : price === '₹10000 - ₹20000'
+          ? a.fee > 10000 && a.fee <= 20000
+          : price === '> ₹20000'
+          ? a.fee > 20000
           : true
 
       return matchCategory && matchLocation && matchPrice
