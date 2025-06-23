@@ -1,36 +1,140 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎭 Artistly.com – Performing Artist Booking Platform
 
-## Getting Started
+Artistly is a modern, responsive, and performant web application built with **Next.js 13+** that allows users to browse and filter performing artists. Artists can also onboard themselves using a multi-step form. This app demonstrates real-world UI architecture, component optimization, and best practices for SEO, accessibility, and performance.
 
-First, run the development server:
+## 🚀 Live Demo
+
+[https://artistly.vercel.app](https://artistly.vercel.app)
+
+---
+
+## 📌 Features
+
+### 🔍 Artist Listing Page
+- Fully responsive grid layout
+- **Filter by Category, Location, and Fee Range**
+- Virtualized list rendering with `react-window` for high performance
+- Clean UI with reusable components
+
+### 📝 Artist Onboarding
+- Multi-section onboarding form with validated fields
+- Inputs: Name, Bio, Category (multi-select), Languages, Fee Range, Image Upload, Location
+- Form validation using **React Hook Form** + **Yup**
+- File uploads using controlled components
+- Mock submission (console or mock API)
+
+### 📊 Manager Dashboard
+- Table of artist submissions
+- Displays: Name, Category, City, Fee, Actions
+- Conditional rendering
+- Reusable table component
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer        | Tech                                  |
+|--------------|----------------------------------------|
+| Frontend     | Next.js 13+ with App Router            |
+| UI Components| ShadCN + Tailwind CSS + Radix UI       |
+| Forms        | React Hook Form + Yup                  |
+| State Mgmt   | React `useState`, `useEffect`, `useContext` |
+| Optimization | `React.memo`, `useCallback`, `useMemo`, `react-window` |
+| Deployment   | Vercel                                  |
+
+---
+
+## 📁 Folder Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+artistly/
+├── .gitignore
+├── public/
+│   └── images/
+│       └── artists/            # All artist images go here
+├── src/
+│   ├── app/
+│   │   ├── artists/            # Artist listing page
+│   │   │   └── page.tsx
+│   │   ├── onboarding/         # Onboarding form
+│   │   │   └── page.tsx
+│   │   ├── dashboard/          # Manager dashboard
+│   │   │   └── page.tsx
+│   │   └── layout.tsx
+│   │   └── page.tsx            # Home page
+│
+│   ├── components/
+│   │   ├── ArtistCard.tsx
+│   │   ├── CategoryCard.tsx
+│   │   ├── FilterBlock.tsx
+│   │   ├── FilterCard.tsx
+│   │   ├── Header.tsx
+│   │   ├── Table.tsx
+│   │   ├── TableRow.tsx
+│   │   ├── ThemeToggle.tsx
+│   │   └── ui/
+│   │       ├── Button.tsx
+│   │       ├── Checkbox.tsx
+│   │       ├── Input.tsx
+│   │       ├── Label.tsx
+│   │       ├── Textarea.tsx
+│   │       └── multi-select.tsx
+│
+│   ├── context/
+│   │   └── theme-store.ts      # Zustand store or context API
+│
+│   ├── data/
+│   │   ├── artists.json
+│   │   ├── categories.json
+│   │   └── submissions.json
+│
+│   ├── lib/
+│   │   ├── utils.ts
+│   │   └── artistSchema.ts     # Input validation schema
+│
+│   ├── types/
+│   │   ├── artist.ts
+│   │   └── submission.ts
+│
+│   └── styles/                 # Optional: tailwind.css or global.css
+│
+├── tailwind.config.ts
+├── postcss.config.mjs
+├── next.config.mjs
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✅ Optimization Techniques Used
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `React.memo` for component memoization
+- `useMemo` and `useCallback` for avoiding unnecessary recalculations
+- Responsive layouts using Tailwind and CSS Grid
+- Virtualized list rendering for large artist datasets
+- Lazy-loaded components with `next/dynamic`
+- Clean and modular component structure
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1. Clone the repo
+```bash
+git clone https://github.com/your-username/artistly.git
+cd artistly
+npm install
+npm run dev
+```
+http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## SEO & Accessibility
 
-## Deploy on Vercel
+### 🔍 Artist Listing Page
+- Semantic HTML and accessible form inputs
+- Meta tags and next/head usage for SEO
+- Descriptive image alt attributes
+- Dark/light theme support
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+- This project is ready for deployment on Vercel. Just push to GitHub and connect your repo at vercel.com
