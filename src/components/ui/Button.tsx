@@ -2,7 +2,7 @@
 import React from 'react'
 import clsx from 'clsx'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export const Button: React.FC<ButtonProps> = ({ className, ...props }) => (
   <button

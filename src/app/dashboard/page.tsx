@@ -1,16 +1,22 @@
-import { Metadata } from 'next'
-import { useMemo } from 'react'
+'use client'
+
+import { useEffect, useMemo, useState } from 'react'
 import submissionsData from '@/data/submissions.json'
 import { Table } from '@/components/Table'
 import { TableRow } from '@/components/TableRow'
 import type { Submission } from '@/types/submission'
 
-export const metadata: Metadata = {
-  title: 'Artistly – Manager Dashboard',
-  description: 'View and manage artist submissions on Artistly.',
-}
-
 export default function DashboardPage() {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   const submissions = submissionsData as Submission[]
 
   const rows = useMemo(
@@ -25,7 +31,11 @@ export default function DashboardPage() {
     <section className="max-w-4xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Manager Dashboard</h1>
 
-      {submissions.length > 0 ? (
+      {loading ? (
+        <div className="flex justify-center items-center h-48 text-muted-foreground">
+          Loading Onboarded Artists...
+        </div>
+      ) : submissions.length > 0 ? (
         <Table>
           <thead className="bg-gray-100 dark:bg-zinc-700">
             <tr>
@@ -41,7 +51,7 @@ export default function DashboardPage() {
           </tbody>
         </Table>
       ) : (
-        <p className="text-center text-muted-foreground">No submissions found.</p>
+        <p className="text-center text-muted-foreground">No Artists found.</p>
       )}
     </section>
   )

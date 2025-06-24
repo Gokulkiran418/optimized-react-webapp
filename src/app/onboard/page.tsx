@@ -2,7 +2,7 @@
 
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { artistSchema, ArtistFormData } from '@/lib/schema/artistSchema'
+import { artistSchema} from '@/lib/schema/artistSchema'
 import { useState } from 'react'
 import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
@@ -11,10 +11,10 @@ import { Label } from '@/components/ui/Label'
 import { Checkbox } from '@/components/ui/Checkbox'
 import MultiSelect from '@/components/ui/multi-select'
 import type { ArtistFormData as FormData } from '@/lib/schema/artistSchema'
+import Image from 'next/image'
 
 const categories = ['Singer', 'Dancer', 'DJ', 'Speaker']
 const languages = ['English', 'Hindi', 'Tamil', 'Punjabi']
-const feeRanges = ['10000 - 15000', '15000 - 20000', '> 20000']
 
 export default function OnboardingPage() {
   const [showModal, setShowModal] = useState(false)
@@ -159,15 +159,18 @@ export default function OnboardingPage() {
           <Label htmlFor="image">Upload Image (optional)</Label>
           <Input id="image" type="file" accept="image/*" onChange={handleImageUpload} />
           {imageUrl && (
-            <img
-              src={imageUrl}
-              alt="preview"
-              className="h-24 mt-2 rounded border"
-            />
+            <div className="relative h-24 w-24 mt-2 rounded overflow-hidden">
+              <Image
+                src={imageUrl}
+                alt="preview"
+                fill
+                className="object-cover"
+              />
+            </div>
           )}
         </div>
 
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full dark:bg-gray-600">
           Submit
         </Button>
       </form>

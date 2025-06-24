@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { create } from 'zustand'
 
 type Theme = 'light' | 'dark'

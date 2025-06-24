@@ -2,11 +2,13 @@
   "name": "artistly",
   "version": "0.1.0",
   "private": true,
+  "analyze": "cross-env ANALYZE=true next build",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
@@ -35,6 +37,7 @@
     "@types/react-dom": "^19",
     "@types/react-window": "^1.8.8",
     "autoprefixer": "^10.4.21",
+    "cross-env": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "tailwindcss": "^4.1.10",

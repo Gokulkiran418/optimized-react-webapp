@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { useTheme } from '@/context/theme-store'
 import ThemeToggle from './ThemeToggle'
 
 const Header = () => {

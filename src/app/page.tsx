@@ -20,7 +20,7 @@ export default function HomePage() {
         </p>
         <a
           href="/artists"
-          className="inline-block bg-primary text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-primary/80 transition"
+          className="inline-block bg-primary dark:bg-black dark:hover:bg-gray-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-primary/80 transition"
         >
           Explore Artists
         </a>

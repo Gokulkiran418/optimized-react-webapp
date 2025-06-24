@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useMemo, useState, useCallback } from 'react'
-import type { Metadata } from 'next'
+import { useMemo, useState, useCallback } from 'react'
+
 import dynamic from 'next/dynamic'
 import ArtistCard from '@/components/ArtistCard'
 import FilterBlock from '@/components/FilterBlock'
