@@ -5,6 +5,7 @@
     "category": "Singer",
     "location": "Mumbai",
     "fee": 11000,
+    "feerange":"10000 - 15000",
     "image": "/images/artists/ariasmith.jpg"
   },
    {
@@ -13,6 +14,7 @@
     "category": "Singer",
     "location": "Delhi",
     "fee": 23000,
+    "feerange":"20000 - 25000",
     "image": "/images/artists/adam.jpg"
   },
   {
@@ -21,6 +23,7 @@
     "category": "DJs",
     "location": "Delhi",
     "fee": 14000,
+    "feerange":"10000 - 15000",
     "image": "/images/artists/rhythmbeats.jpg"
   },
   {
@@ -29,6 +32,7 @@
     "category": "DJs",
     "location": "Delhi",
     "fee": 28000,
+    "feerange":"25000 - 30000",
     "image": "/images/artists/kassandra.jpg"
   },
   {
@@ -37,6 +41,7 @@
     "category": "Dancer",
     "location": "Mumbai",
     "fee": 22000,
+    "feerange":"20000 - 25000",
     "image": "/images/artists/Dragonflydance.jpg"
   },
   {
@@ -44,7 +49,8 @@
     "name": "Zoya",
     "category": "Dancer",
     "location": "Chennai",
-    "fee": 12000,
+    "fee": 16000,
+    "feerange":"10000 - 15000",
     "image": "/images/artists/zoya.jpg"
   }
   

@@ -5,6 +5,7 @@ export type Artist = {
   name: string
   category: string
   location: string
-  fee: number // 👈 replace 'price' with 'fee'
+  fee: number 
+  feerange: string// 👈 replace 'price' with 'fee'
   image?: string
 }

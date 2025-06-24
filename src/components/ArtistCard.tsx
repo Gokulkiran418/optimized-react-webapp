@@ -28,7 +28,7 @@ const ArtistCard = ({ artist }: Props) => (
 
     {/* Artist Fee */}
     <p className="mt-1 text-sm text-primary font-medium">
-      Fee: ₹{artist.fee.toLocaleString()}
+      Fee: ₹{artist.feerange}
     </p>
 
     {/* CTA Button */}

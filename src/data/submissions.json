@@ -4,13 +4,13 @@
     "name": "Aria Smith",
     "category": "Singers",
     "city": "Mumbai",
-    "fee": 30000
+    "fee": 15000
   },
   {
-    "id": "2",
-    "name": "Rhythm Beats",
+  "id": "4",
+    "name": "Kassandra",
     "category": "DJs",
     "city": "Delhi",
-    "fee": 50000
+    "fee": 28000
   }
 ]
