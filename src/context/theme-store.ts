@@ -8,19 +8,22 @@ type Theme = 'light' | 'dark'
 interface ThemeStore {
   theme: Theme
   toggleTheme: () => void
+  setTheme: (theme: Theme) => void
 }
 
 const useThemeStore = create<ThemeStore>((set) => ({
-  theme: 'light',
+  theme: 'light', // Default to light mode
   toggleTheme: () =>
     set((state) => ({ theme: state.theme === 'light' ? 'dark' : 'light' })),
+  setTheme: (theme) => set({ theme }),
 }))
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const { theme } = useThemeStore()
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
+    document.documentElement.classList.remove('light', 'dark')
+    document.documentElement.classList.add(theme)
   }, [theme])
 
   return children
