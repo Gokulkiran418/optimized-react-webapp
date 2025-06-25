@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import BackgroundShapes from './BackgroundShapes'
+import Link from 'next/link'
 
 export default function Hero() {
   return (
@@ -24,12 +25,13 @@ export default function Hero() {
       {/* Spinner around button */}
       <div className="relative w-36 h-36 mx-auto">
         <div className="absolute inset-0 border-4 border-primary bg-gray-700 rounded-[20%] dark:bg-white animate-spin-slow rotate-45 z-0" />
-        <a
+
+        <Link
           href="/artists"
           className="absolute inset-2 bg-primary dark:bg-black text-white flex items-center justify-center transform rotate-45 rounded-[10%] font-semibold text-sm z-10 hover:scale-105 transition-transform"
         >
           <span className="transform -rotate-45">Explore Artists</span>
-        </a>
+        </Link>
       </div>
     </motion.div>
   )
