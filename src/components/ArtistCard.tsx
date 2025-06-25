@@ -12,8 +12,16 @@ const ArtistCard = ({ artist }: Props) => {
   const [showModal, setShowModal] = useState(false)
   const [quote, setQuote] = useState('')
   const [sent, setSent] = useState(false)
+  const [quoteError, setQuoteError] = useState('')
 
   const handleSend = () => {
+    const parsed = parseInt(quote)
+    if (!parsed || parsed <= 0) {
+      setQuoteError('Please enter a valid number')
+      return
+    }
+
+    setQuoteError('')
     setSent(true)
     setTimeout(() => {
       setShowModal(false)
@@ -23,7 +31,7 @@ const ArtistCard = ({ artist }: Props) => {
   }
 
   return (
-    <div className="bg-white dark:bg-zinc-900 rounded-lg shadow p-4 flex flex-col relative">
+    <div className="bg-white dark:bg-gray-900 rounded-lg shadow p-4 flex flex-col relative">
       {/* Artist Image */}
       <div className="relative h-32 w-full mb-3">
         <Image
@@ -44,11 +52,11 @@ const ArtistCard = ({ artist }: Props) => {
 
       {/* CTA Button */}
       <button
-      className="mt-auto bg-primary text-white py-1 rounded hover:bg-primary/80 transition dark:bg-black dark:text-white dark:hover:bg-gray-900"
-      onClick={() => setShowModal(true)}
-    >
-      Ask for Quote
-    </button>
+        className="mt-auto bg-primary text-white py-1 rounded hover:bg-primary/80 transition dark:bg-black dark:text-white dark:hover:bg-gray-600"
+        onClick={() => setShowModal(true)}
+      >
+        Ask for Quote
+      </button>
 
       {/* Modal */}
       {showModal && (
@@ -56,7 +64,11 @@ const ArtistCard = ({ artist }: Props) => {
           <div className="bg-white dark:bg-zinc-800 p-4 rounded-lg shadow-lg w-72 relative">
             {/* Close button */}
             <button
-              onClick={() => setShowModal(false)}
+              onClick={() => {
+                setShowModal(false)
+                setQuote('')
+                setQuoteError('')
+              }}
               className="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-lg font-bold"
             >
               ×
@@ -70,8 +82,11 @@ const ArtistCard = ({ artist }: Props) => {
                   placeholder="₹ Enter fee"
                   value={quote}
                   onChange={(e) => setQuote(e.target.value)}
-                  className="w-full border rounded px-3 py-1 mb-3 dark:bg-zinc-700"
+                  className="w-full border rounded px-3 py-1 mb-1 dark:bg-zinc-700"
                 />
+                {quoteError && (
+                  <p className="text-sm text-red-500 mb-2">{quoteError}</p>
+                )}
                 <button
                   onClick={handleSend}
                   className="w-full bg-primary text-white py-1 rounded hover:bg-primary/80 transition"
@@ -81,7 +96,7 @@ const ArtistCard = ({ artist }: Props) => {
               </>
             ) : (
               <p className="text-center text-green-600 font-medium">
-                Message sent!
+                Quote sent!
               </p>
             )}
           </div>

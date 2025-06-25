@@ -16,12 +16,12 @@ export const TableRow: React.FC<TableRowProps> = ({ data }) => {
 
   return (
     <>
-      <tr className="hover:bg-gray-50 dark:hover:bg-zinc-800">
-        <td className="px-4 py-2">{data.name}</td>
-        <td className="px-4 py-2">{data.category}</td>
-        <td className="px-4 py-2">{data.city}</td>
-        <td className="px-4 py-2">₹{data.fee}</td>
-        <td className="px-4 py-2">
+      <tr className="hover:bg-gray-50 dark:hover:bg-zinc-800 dark:border-white">
+        <td className="px-4 py-2 border-b dark:border-white">{data.name}</td>
+        <td className="px-4 py-2 border-b dark:border-white">{data.category}</td>
+        <td className="px-4 py-2 border-b dark:border-white">{data.city}</td>
+        <td className="px-4 py-2 border-b dark:border-white">₹{data.fee}</td>
+        <td className="px-4 py-2 border-b dark:border-white">
           <button 
             className="px-3 py-1 text-sm text-white bg-primary dark:bg-gray-900 rounded dark:hover:bg-black transition hover:bg-gray-500 transition dark:bg-black"
             onClick={() => setShowModal(true)}
