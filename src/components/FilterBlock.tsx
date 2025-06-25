@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useCallback, useEffect } from 'react'
+import { useState, useMemo, useCallback, useEffect, memo } from 'react'
 import { useSearchParams } from 'next/navigation'
 import type { Artist } from '@/types/artist'
 
@@ -9,7 +9,7 @@ type FilterBlockProps = {
   onFilter: (filtered: Artist[]) => void
 }
 
-export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
+function FilterBlock({ artists, onFilter }: FilterBlockProps) {
   const searchParams = useSearchParams()
   const categoryParam = searchParams.get('category') || ''
 
@@ -18,11 +18,9 @@ export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
   const [price, setPrice] = useState('')
 
   // 🔄 Sync category state with URL param on initial load
- useEffect(() => {
-  // Only run this once when component mounts
-  setCategory(categoryParam || '')
-}, [])
-
+  useEffect(() => {
+    setCategory(categoryParam || '')
+  }, []) // run only once on mount
 
   const uniqueCategories = useMemo(
     () => Array.from(new Set(artists.map((a) => a.category))),
@@ -34,7 +32,10 @@ export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
     [artists]
   )
 
-  const priceRanges = ['< ₹15000', '₹10000 - ₹20000', '> ₹20000']
+  const priceRanges = useMemo(
+    () => ['< ₹15000', '₹10000 - ₹20000', '> ₹20000'],
+    []
+  )
 
   const filterArtists = useCallback(() => {
     const result = artists.filter((a) => {
@@ -67,7 +68,7 @@ export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-full border rounded px-2 py-1"
+          className="w-full border dark:bg-black rounded px-2 py-1"
         >
           <option value="">All</option>
           {uniqueCategories.map((cat) => (
@@ -84,7 +85,7 @@ export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
         <select
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-          className="w-full border rounded px-2 py-1"
+          className="w-full dark:bg-black border rounded px-2 py-1"
         >
           <option value="">All</option>
           {uniqueLocations.map((loc) => (
@@ -101,7 +102,7 @@ export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
         <select
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-          className="w-full border rounded px-2 py-1"
+          className="w-full border dark:bg-black rounded px-2 py-1"
         >
           <option value="">All</option>
           {priceRanges.map((range) => (
@@ -114,3 +115,5 @@ export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
     </div>
   )
 }
+
+export default memo(FilterBlock)

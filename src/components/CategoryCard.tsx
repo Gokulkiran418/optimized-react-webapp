@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { memo, useMemo } from 'react'
 
 interface Props {
   title: string
@@ -10,6 +11,9 @@ interface Props {
 }
 
 const CategoryCard = ({ title, image }: Props) => {
+  const href = useMemo(() => `/artists?category=${encodeURIComponent(title)}`, [title])
+  const altText = useMemo(() => `${title} category`, [title])
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -21,11 +25,11 @@ const CategoryCard = ({ title, image }: Props) => {
       }}
       className="rounded-lg overflow-hidden shadow border border-black dark:border-white"
     >
-      <Link href={`/artists?category=${encodeURIComponent(title)}`}>
+      <Link href={href}>
         <div className="relative h-40 w-full">
           <Image
             src={image}
-            alt={`${title} category`}
+            alt={altText}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 33vw"
@@ -40,4 +44,4 @@ const CategoryCard = ({ title, image }: Props) => {
   )
 }
 
-export default CategoryCard
+export default memo(CategoryCard)

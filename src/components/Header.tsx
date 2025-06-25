@@ -1,15 +1,19 @@
 'use client'
 
+import { memo, useMemo } from 'react'
 import Link from 'next/link'
 import ThemeToggle from './ThemeToggle'
 
-const navItems = [
-  { href: '/artists', label: 'Artists' },
-  { href: '/onboard', label: 'Onboard' },
-  { href: '/dashboard', label: 'Dashboard' },
-]
-
 const Header = () => {
+  const navItems = useMemo(
+    () => [
+      { href: '/artists', label: 'Artists' },
+      { href: '/onboard', label: 'Onboard' },
+      { href: '/dashboard', label: 'Dashboard' },
+    ],
+    []
+  )
+
   return (
     <header className="w-full flex items-center justify-between px-4 py-3 shadow-sm sticky top-0 bg-white dark:bg-zinc-900 z-50">
       {/* Logo with hover underline */}
@@ -36,4 +40,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default memo(Header)

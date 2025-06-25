@@ -1,7 +1,6 @@
-// src/components/ArtistsContent.tsx
 'use client'
 
-import { useMemo, useState, useCallback } from 'react'
+import { memo, useMemo, useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { useSearchParams } from 'next/navigation'
 
@@ -19,15 +18,17 @@ interface ArtistsContentProps {
   allArtists: Artist[]
 }
 
-export default function ArtistsContent({ allArtists }: ArtistsContentProps) {
+function ArtistsContent({ allArtists }: ArtistsContentProps) {
   const params = useSearchParams()
   const categoryParam = params.get('category') || ''
 
-  const [filtered, setFiltered] = useState<Artist[]>(
-    categoryParam
+  const initialFiltered = useMemo(() => {
+    return categoryParam
       ? allArtists.filter((a) => a.category === categoryParam)
       : allArtists
-  )
+  }, [categoryParam, allArtists])
+
+  const [filtered, setFiltered] = useState<Artist[]>(initialFiltered)
   const [activeCategory, setActiveCategory] = useState(categoryParam)
 
   const handleFilter = useCallback((results: Artist[]) => {
@@ -86,3 +87,5 @@ export default function ArtistsContent({ allArtists }: ArtistsContentProps) {
     </section>
   )
 }
+
+export default memo(ArtistsContent)

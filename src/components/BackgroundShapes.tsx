@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 
 const shapeTypes = ['circle', 'square', 'blob'] as const
 type ShapeType = typeof shapeTypes[number]
@@ -14,7 +14,7 @@ type ShapeProps = {
   delay: number
 }
 
-const Shape = ({ x, y, size, type, delay }: ShapeProps) => {
+const Shape = memo(({ x, y, size, type, delay }: ShapeProps) => {
   const baseClass =
     'absolute z-[-1] pointer-events-none transition-colors duration-300'
   const shapeClass =
@@ -34,7 +34,7 @@ const Shape = ({ x, y, size, type, delay }: ShapeProps) => {
         y: [0, -10, 10, 0],
       }}
       transition={{
-        duration: 8,
+        duration: 5,
         delay,
         repeat: Infinity,
         repeatType: 'mirror',
@@ -49,20 +49,18 @@ const Shape = ({ x, y, size, type, delay }: ShapeProps) => {
       }}
     />
   )
-}
+})
 
 export default function BackgroundShapes({
   side = 'full',
 }: {
   side?: 'left' | 'right' | 'full'
 }) {
-  const [shapes, setShapes] = useState<ShapeProps[]>([])
-
-  useEffect(() => {
+  const shapes = useMemo(() => {
     const generated: ShapeProps[] = []
 
     for (let i = 0; i < 8; i++) {
-      const rawX = Math.random() * 40 // keep shapes from overflowing
+      const rawX = Math.random() * 40
       const x =
         side === 'left'
           ? rawX
@@ -79,7 +77,7 @@ export default function BackgroundShapes({
       generated.push({ x, y, size, type, delay })
     }
 
-    setShapes(generated)
+    return generated
   }, [side])
 
   return (

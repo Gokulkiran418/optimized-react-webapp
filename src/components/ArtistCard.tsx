@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { memo, useState } from 'react'
+import { memo, useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import type { Artist } from '@/types/artist'
 
@@ -14,6 +14,8 @@ const ArtistCard = ({ artist }: Props) => {
   const [quote, setQuote] = useState('')
   const [sent, setSent] = useState(false)
   const [quoteError, setQuoteError] = useState('')
+
+  const imageSrc = useMemo(() => artist.image ?? '/placeholder.png', [artist.image])
 
   const handleSend = () => {
     const parsed = parseInt(quote)
@@ -54,7 +56,7 @@ const ArtistCard = ({ artist }: Props) => {
       {/* Artist Image */}
       <div className="relative h-32 w-full mb-3 rounded overflow-hidden">
         <Image
-          src={artist.image ?? '/placeholder.png'}
+          src={imageSrc}
           alt={artist.name}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -115,7 +117,7 @@ const ArtistCard = ({ artist }: Props) => {
               </>
             ) : (
               <p className="text-center text-green-600 font-medium">
-                Quote sent!
+                Quote sent!(Mock)
               </p>
             )}
           </div>
