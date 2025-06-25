@@ -52,6 +52,24 @@
     "fee": 16000,
     "feerange":"15000 - 20000",
     "image": "/images/artists/zoya.jpg"
+  },
+  {
+    "id": "7",
+    "name": "Marshal Speakers",
+    "category": "Speakers",
+    "location": "Mumbai",
+    "fee": 20000,
+    "feerange":"15000 - 20000",
+    "image": "/images/artists/marshal.jpg"
+  },
+  {
+    "id": "8",
+    "name": "JBL Speakers",
+    "category": "Speakers",
+    "location": "Chennai",
+    "fee": 10000,
+    "feerange":"5000 - 10000",
+    "image": "/images/artists/jbl.jpg"
   }
   
 ]
