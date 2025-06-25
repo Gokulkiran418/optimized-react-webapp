@@ -1,13 +1,13 @@
 'use client'
 
-import { useMemo, useState, useCallback } from 'react'
+import { useMemo, useState, useCallback, useEffect } from 'react'
 
 import dynamic from 'next/dynamic'
 import ArtistCard from '@/components/ArtistCard'
 import FilterBlock from '@/components/FilterBlock'
 import type { Artist } from '@/types/artist'
 import artistsData from '@/data/artists.json'
-
+import { useSearchParams } from 'next/navigation'
 // Dynamically import FixedSizeGrid
 const FixedSizeGrid = dynamic(
   async () => {
@@ -19,10 +19,20 @@ const FixedSizeGrid = dynamic(
 
 export default function ArtistsPage() {
   const allArtists = artistsData as Artist[]
-  const [filtered, setFiltered] = useState<Artist[]>(allArtists)
+  const params = useSearchParams()
+  const categoryParam = params.get('category') || ''
 
+   const [filtered, setFiltered] = useState<Artist[]>(
+   categoryParam
+      ? allArtists.filter((a) => a.category === categoryParam)
+      : allArtists
+  )
+
+  // If user manually filters, clear the banner
+  const [activeCategory, setActiveCategory] = useState(categoryParam)
   const handleFilter = useCallback((results: Artist[]) => {
     setFiltered(results)
+    setActiveCategory('') // clear banner when manual filters applied
   }, [])
 
   const isVirtualized = useMemo(() => filtered.length > 50, [filtered.length])
@@ -33,9 +43,14 @@ export default function ArtistsPage() {
       <aside className="w-full lg:w-1/4">
         <FilterBlock artists={allArtists} onFilter={handleFilter} />
       </aside>
-
+       <div className="flex-1 space-y-4">
+        {activeCategory && (
+          <div className="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-4 py-2 rounded">
+            Showing results for: <strong>{activeCategory}</strong>
+          </div>
+        )}
       {/* Artist Grid or Virtualized Grid */}
-      <div className="flex-1">
+
         {filtered.length === 0 ? (
           <p className="text-center text-muted-foreground">
             No artists match your filters.

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo, useCallback, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import type { Artist } from '@/types/artist'
 
 type FilterBlockProps = {
@@ -9,9 +10,19 @@ type FilterBlockProps = {
 }
 
 export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
+  const searchParams = useSearchParams()
+  const categoryParam = searchParams.get('category') || ''
+
   const [category, setCategory] = useState('')
   const [location, setLocation] = useState('')
   const [price, setPrice] = useState('')
+
+  // 🔄 Sync category state with URL param on initial load
+ useEffect(() => {
+  // Only run this once when component mounts
+  setCategory(categoryParam || '')
+}, [])
+
 
   const uniqueCategories = useMemo(
     () => Array.from(new Set(artists.map((a) => a.category))),
@@ -44,7 +55,6 @@ export default function FilterBlock({ artists, onFilter }: FilterBlockProps) {
     onFilter(result)
   }, [artists, category, location, price, onFilter])
 
-  // ✅ Correct side-effect usage
   useEffect(() => {
     filterArtists()
   }, [filterArtists])

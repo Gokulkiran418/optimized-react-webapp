@@ -12,12 +12,20 @@ interface Props {
 const CategoryCard = ({ title, image }: Props) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow duration-300"
+      transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
+      whileHover={{
+        scale: 1.05,
+        rotate: [0, 2, -2, 1, 0], // slight wobble rotation
+        transition: {
+          duration: 0.3,
+          ease: 'easeInOut',
+        },
+      }}
+      className="rounded-lg overflow-hidden shadow border border-black dark:border-white"
     >
-      <Link href="/artists">
+      <Link href={`/artists?category=${encodeURIComponent(title)}`}>
         <div className="relative h-40 w-full">
           <Image
             src={image}

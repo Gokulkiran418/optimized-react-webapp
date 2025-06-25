@@ -34,12 +34,14 @@ const ArtistCard = ({ artist }: Props) => {
     <div className="bg-white dark:bg-gray-900 rounded-lg shadow p-4 flex flex-col relative">
       {/* Artist Image */}
       <div className="relative h-32 w-full mb-3">
-        <Image
-          src={artist.image ?? '/placeholder.png'}
-          alt={artist.name}
-          fill
-          className="object-cover rounded"
-        />
+       <Image
+        src={artist.image ?? '/placeholder.png'}
+        alt={artist.name}
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        className="object-cover rounded"
+      />
+
       </div>
 
       {/* Artist Info */}

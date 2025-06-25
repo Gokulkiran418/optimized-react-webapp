@@ -2,7 +2,7 @@
   {
     "id": "1",
     "name": "Aria Smith",
-    "category": "Singer",
+    "category": "Singers",
     "location": "Mumbai",
     "fee": 11000,
     "feerange":"10000 - 15000",
@@ -11,7 +11,7 @@
    {
     "id": "2",
     "name": "Adam",
-    "category": "Singer",
+    "category": "Singers",
     "location": "Delhi",
     "fee": 23000,
     "feerange":"20000 - 25000",
@@ -38,7 +38,7 @@
   {
     "id": "5",
     "name": "DragonFly Dance Group",
-    "category": "Dancer",
+    "category": "Dancers",
     "location": "Mumbai",
     "fee": 22000,
     "feerange":"20000 - 25000",
@@ -47,7 +47,7 @@
   {
     "id": "6",
     "name": "Zoya",
-    "category": "Dancer",
+    "category": "Dancers",
     "location": "Chennai",
     "fee": 16000,
     "feerange":"15000 - 20000",
