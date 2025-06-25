@@ -50,58 +50,48 @@ Artistly is a modern, responsive, and performant web application built with **Ne
 artistly/
 ├── .gitignore
 ├── public/
-│   └── images/
-│       └── artists/            # All artist images go here
-├── src/
-│   ├── app/
-│   │   ├── artists/            # Artist listing page
-│   │   │   └── page.tsx
-│   │   ├── onboarding/         # Onboarding form
-│   │   │   └── page.tsx
-│   │   ├── dashboard/          # Manager dashboard
-│   │   │   └── page.tsx
-│   │   └── layout.tsx
-│   │   └── page.tsx            # Home page
-│
-│   ├── components/
-│   │   ├── ArtistCard.tsx
-│   │   ├── CategoryCard.tsx
-│   │   ├── FilterBlock.tsx
-│   │   ├── FilterCard.tsx
-│   │   ├── Header.tsx
-│   │   ├── Table.tsx
-│   │   ├── TableRow.tsx
-│   │   ├── ThemeToggle.tsx
-│   │   └── ui/
-│   │       ├── Button.tsx
-│   │       ├── Checkbox.tsx
-│   │       ├── Input.tsx
-│   │       ├── Label.tsx
-│   │       ├── Textarea.tsx
-│   │       └── multi-select.tsx
-│
-│   ├── context/
-│   │   └── theme-store.ts      # Zustand store or context API
-│
 │   ├── data/
-│   │   ├── artists.json
-│   │   ├── categories.json
-│   │   └── submissions.json
-│
+│   │   ├── artists.json         # Static artist data
+│   │   ├── categories.json      # Static category data
+│   │   └── submissions.json     # Static submission data
+│   └── images/
+│       └── artists/             # All artist images go here
+├── pages/
+│   ├── index.tsx               # Home page
+│   ├── artists.tsx             # Artists listing page
+│   ├── dashboard.tsx           # Manager dashboard page
+│   ├── onboard.tsx             # Onboarding form page
+│   └── _app.tsx                # Custom App component for layout
+├── src/
+│   ├── components/
+│   │   ├── ArtistCard.tsx      # Artist card component
+│   │   ├── CategoryCard.tsx    # Category card component
+│   │   ├── FilterBlock.tsx     # Filter block for artists
+│   │   ├── FilterCard.tsx      # Filter card component
+│   │   ├── Header.tsx          # Header navigation
+│   │   ├── Table.tsx           # Table component
+│   │   ├── TableRow.tsx        # Table row component
+│   │   ├── ThemeToggle.tsx     # Theme toggle component
+│   │   └── ui/
+│   │       ├── Button.tsx      # UI button component
+│   │       ├── Checkbox.tsx    # UI checkbox component
+│   │       ├── Input.tsx       # UI input component
+│   │       ├── Label.tsx       # UI label component
+│   │       ├── Textarea.tsx    # UI textarea component
+│   │       └── multi-select.tsx # UI multi-select component
+│   ├── context/
+│   │   └── theme-store.ts      # Zustand store or context API for theme
 │   ├── lib/
-│   │   ├── utils.ts
+│   │   ├── utils.ts            # Utility functions
 │   │   └── artistSchema.ts     # Input validation schema
-│
 │   ├── types/
-│   │   ├── artist.ts
-│   │   └── submission.ts
-│
-│   └── styles/                 # Optional: tailwind.css or global.css
-│
-├── tailwind.config.ts
-├── postcss.config.mjs
-├── next.config.mjs
-└── README.md
+│   │   ├── artist.ts           # Artist type definitions
+│   │   └── submission.ts       # Submission type definitions
+│   └── styles/                 # Optional: Tailwind CSS or global styles
+├── tailwind.config.ts          # Tailwind CSS configuration
+├── postcss.config.mjs          # PostCSS configuration
+├── next.config.mjs             # Next.js configuration
+└── README.md                   # Project documentation
 ```
 
 ---
@@ -114,6 +104,8 @@ artistly/
 - Virtualized list rendering for large artist datasets
 - Lazy-loaded components with `next/dynamic`
 - Clean and modular component structure
+- getStaticProps for performance.
+- getServerSideProps for real-time data.
 
 ---
 
