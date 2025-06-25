@@ -9,7 +9,7 @@ type FilterBlockProps = {
   onFilter: (filtered: Artist[]) => void
 }
 
-function FilterBlock({ artists, onFilter }: FilterBlockProps) {
+const FilterBlockComponent = ({ artists, onFilter }: FilterBlockProps) => {
   const searchParams = useSearchParams()
   const categoryParam = searchParams.get('category') || ''
 
@@ -116,4 +116,6 @@ function FilterBlock({ artists, onFilter }: FilterBlockProps) {
   )
 }
 
-export default memo(FilterBlock)
+FilterBlockComponent.displayName = 'FilterBlock'
+
+export default memo(FilterBlockComponent)

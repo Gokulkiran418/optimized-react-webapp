@@ -9,7 +9,7 @@ interface Props {
   artist: Artist
 }
 
-const ArtistCard = ({ artist }: Props) => {
+const ArtistCardComponent = ({ artist }: Props) => {
   const [showModal, setShowModal] = useState(false)
   const [quote, setQuote] = useState('')
   const [sent, setSent] = useState(false)
@@ -53,7 +53,6 @@ const ArtistCard = ({ artist }: Props) => {
       }}
       className="bg-white dark:bg-black rounded-xl shadow-2xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] transition-shadow duration-300 p-4 flex flex-col relative"
     >
-      {/* Artist Image */}
       <div className="relative h-32 w-full mb-3 rounded overflow-hidden">
         <Image
           src={imageSrc}
@@ -64,7 +63,6 @@ const ArtistCard = ({ artist }: Props) => {
         />
       </div>
 
-      {/* Artist Info */}
       <h3 className="font-semibold text-lg">{artist.name}</h3>
       <p className="text-sm text-muted-foreground">{artist.category}</p>
       <p className="text-sm">{artist.location}</p>
@@ -72,7 +70,6 @@ const ArtistCard = ({ artist }: Props) => {
         Fee: ₹{artist.feerange}
       </p>
 
-      {/* CTA Button */}
       <button
         className="mt-auto bg-primary text-white py-1 rounded hover:bg-primary/80 transition dark:bg-white dark:text-black dark:hover:bg-gray-600"
         onClick={() => setShowModal(true)}
@@ -80,7 +77,6 @@ const ArtistCard = ({ artist }: Props) => {
         Ask for Quote
       </button>
 
-      {/* Modal */}
       {showModal && (
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-10 rounded-lg">
           <div className="bg-white dark:bg-zinc-800 p-4 rounded-lg shadow-lg w-72 relative">
@@ -110,7 +106,7 @@ const ArtistCard = ({ artist }: Props) => {
                 )}
                 <button
                   onClick={handleSend}
-                  className="w-full bg-primary text-white py-1 rounded hover:bg-primary/80 transition"
+                  className="w-full dark:bg-black bg-primary text-white py-1 rounded hover:bg-primary/80 transition"
                 >
                   Send Quote
                 </button>
@@ -127,4 +123,6 @@ const ArtistCard = ({ artist }: Props) => {
   )
 }
 
-export default memo(ArtistCard)
+ArtistCardComponent.displayName = 'ArtistCard'
+
+export default memo(ArtistCardComponent)

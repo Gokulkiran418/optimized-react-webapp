@@ -6,11 +6,15 @@ interface CheckboxProps {
   onCheckedChange: (checked: boolean) => void
 }
 
-export const Checkbox: React.FC<CheckboxProps> = memo(({ checked, onCheckedChange }) => (
+const CheckboxComponent: React.FC<CheckboxProps> = ({ checked, onCheckedChange }) => (
   <input
     type="checkbox"
     checked={checked}
     onChange={(e) => onCheckedChange(e.target.checked)}
     className="h-4 w-4 rounded border focus:ring"
   />
-))
+)
+
+CheckboxComponent.displayName = 'Checkbox'
+
+export const Checkbox = memo(CheckboxComponent)

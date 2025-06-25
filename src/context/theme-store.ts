@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, memo } from 'react'
 import { create } from 'zustand'
 
 type Theme = 'light' | 'dark'
@@ -12,13 +12,13 @@ interface ThemeStore {
 }
 
 const useThemeStore = create<ThemeStore>((set) => ({
-  theme: 'light', // Default to light mode
+  theme: 'light',
   toggleTheme: () =>
     set((state) => ({ theme: state.theme === 'light' ? 'dark' : 'light' })),
   setTheme: (theme) => set({ theme }),
 }))
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+const ThemeProviderComponent = ({ children }: { children: React.ReactNode }) => {
   const { theme } = useThemeStore()
 
   useEffect(() => {
@@ -29,4 +29,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   return children
 }
 
+ThemeProviderComponent.displayName = 'ThemeProvider'
+
+export const ThemeProvider = memo(ThemeProviderComponent)
 export const useTheme = () => useThemeStore()

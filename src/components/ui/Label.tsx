@@ -3,7 +3,7 @@ import React, { memo, useMemo } from 'react'
 
 type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement>
 
-export const Label: React.FC<LabelProps> = memo(({ className = '', children, ...props }) => {
+const LabelComponent: React.FC<LabelProps> = ({ className = '', children, ...props }) => {
   const labelClass = useMemo(
     () => `block text-sm font-medium mb-1 ${className}`,
     [className]
@@ -14,4 +14,8 @@ export const Label: React.FC<LabelProps> = memo(({ className = '', children, ...
       {children}
     </label>
   )
-})
+}
+
+LabelComponent.displayName = 'Label'
+
+export const Label = memo(LabelComponent)

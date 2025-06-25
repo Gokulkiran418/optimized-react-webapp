@@ -18,7 +18,7 @@ interface ArtistsContentProps {
   allArtists: Artist[]
 }
 
-function ArtistsContent({ allArtists }: ArtistsContentProps) {
+const ArtistsContentComponent = ({ allArtists }: ArtistsContentProps) => {
   const params = useSearchParams()
   const categoryParam = params.get('category') || ''
 
@@ -88,4 +88,6 @@ function ArtistsContent({ allArtists }: ArtistsContentProps) {
   )
 }
 
-export default memo(ArtistsContent)
+ArtistsContentComponent.displayName = 'ArtistsContent'
+
+export default memo(ArtistsContentComponent)

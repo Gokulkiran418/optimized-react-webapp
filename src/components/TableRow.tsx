@@ -64,4 +64,6 @@ const TableRowComponent: React.FC<TableRowProps> = ({ data, artist }) => {
   )
 }
 
+TableRowComponent.displayName = 'TableRow'
+
 export const TableRow = memo(TableRowComponent)

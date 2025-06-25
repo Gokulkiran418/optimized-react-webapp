@@ -84,4 +84,6 @@ const MultiSelectComponent = ({
   )
 }
 
+MultiSelectComponent.displayName = 'MultiSelect'
+
 export default React.memo(MultiSelectComponent)

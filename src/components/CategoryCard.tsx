@@ -44,4 +44,7 @@ const CategoryCard = ({ title, image }: Props) => {
   )
 }
 
-export default memo(CategoryCard)
+const MemoizedCategoryCard = memo(CategoryCard)
+MemoizedCategoryCard.displayName = 'CategoryCard'
+
+export default MemoizedCategoryCard

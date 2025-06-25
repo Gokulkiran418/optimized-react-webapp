@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { memo, useEffect, useMemo, useState } from 'react'
+import { memo, useMemo } from 'react'
 
 const shapeTypes = ['circle', 'square', 'blob'] as const
 type ShapeType = typeof shapeTypes[number]

@@ -2,6 +2,7 @@
 
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from '@/context/theme-store'
+import { memo } from 'react'
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme()
@@ -17,4 +18,6 @@ const ThemeToggle = () => {
   )
 }
 
-export default ThemeToggle
+ThemeToggle.displayName = 'ThemeToggle'
+
+export default memo(ThemeToggle)

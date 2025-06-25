@@ -15,4 +15,6 @@ const TableComponent: React.FC<TableProps> = ({ children }) => {
   )
 }
 
+TableComponent.displayName = 'Table'
+
 export const Table = memo(TableComponent)

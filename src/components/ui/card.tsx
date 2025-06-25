@@ -8,6 +8,7 @@ const Card = React.memo(({ className, ...props }: React.ComponentProps<"div">) =
   )
   return <div data-slot="card" className={memoClass} {...props} />
 })
+Card.displayName = "Card"
 
 const CardHeader = React.memo(({ className, ...props }: React.ComponentProps<"div">) => {
   const memoClass = React.useMemo(
@@ -20,16 +21,19 @@ const CardHeader = React.memo(({ className, ...props }: React.ComponentProps<"di
   )
   return <div data-slot="card-header" className={memoClass} {...props} />
 })
+CardHeader.displayName = "CardHeader"
 
 const CardTitle = React.memo(({ className, ...props }: React.ComponentProps<"div">) => {
   const memoClass = React.useMemo(() => cn("leading-none font-semibold", className), [className])
   return <div data-slot="card-title" className={memoClass} {...props} />
 })
+CardTitle.displayName = "CardTitle"
 
 const CardDescription = React.memo(({ className, ...props }: React.ComponentProps<"div">) => {
   const memoClass = React.useMemo(() => cn("text-muted-foreground text-sm", className), [className])
   return <div data-slot="card-description" className={memoClass} {...props} />
 })
+CardDescription.displayName = "CardDescription"
 
 const CardAction = React.memo(({ className, ...props }: React.ComponentProps<"div">) => {
   const memoClass = React.useMemo(
@@ -38,16 +42,19 @@ const CardAction = React.memo(({ className, ...props }: React.ComponentProps<"di
   )
   return <div data-slot="card-action" className={memoClass} {...props} />
 })
+CardAction.displayName = "CardAction"
 
 const CardContent = React.memo(({ className, ...props }: React.ComponentProps<"div">) => {
   const memoClass = React.useMemo(() => cn("px-6", className), [className])
   return <div data-slot="card-content" className={memoClass} {...props} />
 })
+CardContent.displayName = "CardContent"
 
 const CardFooter = React.memo(({ className, ...props }: React.ComponentProps<"div">) => {
   const memoClass = React.useMemo(() => cn("flex items-center px-6 [.border-t]:pt-6", className), [className])
   return <div data-slot="card-footer" className={memoClass} {...props} />
 })
+CardFooter.displayName = "CardFooter"
 
 export {
   Card,

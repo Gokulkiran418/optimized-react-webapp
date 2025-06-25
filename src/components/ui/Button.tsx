@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
-export const Button: React.FC<ButtonProps> = memo(({ className, ...props }) => {
+const ButtonComponent: React.FC<ButtonProps> = ({ className, ...props }) => {
   const buttonClasses = useMemo(
     () =>
       clsx(
@@ -16,4 +16,8 @@ export const Button: React.FC<ButtonProps> = memo(({ className, ...props }) => {
   )
 
   return <button {...props} className={buttonClasses} />
-})
+}
+
+ButtonComponent.displayName = 'Button'
+
+export const Button = memo(ButtonComponent)
