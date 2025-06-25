@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { memo, useState } from 'react'
+import { motion } from 'framer-motion'
 import type { Artist } from '@/types/artist'
 
 interface Props {
@@ -31,17 +32,34 @@ const ArtistCard = ({ artist }: Props) => {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-lg shadow p-4 flex flex-col relative">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{
+        scale: 1.05,
+        transition: {
+          type: 'spring',
+          stiffness: 300,
+          damping: 10,
+        },
+      }}
+      transition={{
+        type: 'spring',
+        duration: 0.8,
+        bounce: 0.5,
+        ease: 'easeOut',
+      }}
+      className="bg-white dark:bg-black rounded-xl shadow-2xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] transition-shadow duration-300 p-4 flex flex-col relative"
+    >
       {/* Artist Image */}
-      <div className="relative h-32 w-full mb-3">
-       <Image
-        src={artist.image ?? '/placeholder.png'}
-        alt={artist.name}
-        fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        className="object-cover rounded"
-      />
-
+      <div className="relative h-32 w-full mb-3 rounded overflow-hidden">
+        <Image
+          src={artist.image ?? '/placeholder.png'}
+          alt={artist.name}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover"
+        />
       </div>
 
       {/* Artist Info */}
@@ -54,7 +72,7 @@ const ArtistCard = ({ artist }: Props) => {
 
       {/* CTA Button */}
       <button
-        className="mt-auto bg-primary text-white py-1 rounded hover:bg-primary/80 transition dark:bg-black dark:text-white dark:hover:bg-gray-600"
+        className="mt-auto bg-primary text-white py-1 rounded hover:bg-primary/80 transition dark:bg-white dark:text-black dark:hover:bg-gray-600"
         onClick={() => setShowModal(true)}
       >
         Ask for Quote
@@ -64,7 +82,6 @@ const ArtistCard = ({ artist }: Props) => {
       {showModal && (
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-10 rounded-lg">
           <div className="bg-white dark:bg-zinc-800 p-4 rounded-lg shadow-lg w-72 relative">
-            {/* Close button */}
             <button
               onClick={() => {
                 setShowModal(false)
@@ -104,7 +121,7 @@ const ArtistCard = ({ artist }: Props) => {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   )
 }
 

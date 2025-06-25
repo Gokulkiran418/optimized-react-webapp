@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import BackgroundShapes from './BackgroundShapes'
 
 export default function Hero() {
   return (
@@ -8,8 +9,11 @@ export default function Hero() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.8, 0.25, 1] }}
-      className="text-center max-w-2xl mx-auto pt-[60px] pb-10 mt-[-15px] space-y-6"
+      className="relative text-center max-w-2xl mx-auto pt-[60px] pb-10 mt-[-15px] space-y-6"
     >
+      {/* Background animated shapes */}
+      <BackgroundShapes />
+
       <h1 className="text-4xl md:text-5xl font-bold">
         Discover & Book Performing Artists
       </h1>
@@ -19,18 +23,14 @@ export default function Hero() {
 
       {/* Spinner around button */}
       <div className="relative w-36 h-36 mx-auto">
-      {/* Spinning border */}
-      <div className="absolute inset-0 border-4 border-primary bg-gray-700 rounded-[20%] dark:bg-white animate-spin-slow rotate-45 z-0" />
-
-      {/* Diamond Button */}
-      <a
-      href="/artists"
-      className="absolute inset-2 bg-primary dark:bg-black text-white flex items-center justify-center transform rotate-45 rounded-[10%] font-semibold text-sm z-10 hover:scale-105 transition-transform"
-      >
-      <span className="transform -rotate-45">Explore Artists</span>
-      </a>
+        <div className="absolute inset-0 border-4 border-primary bg-gray-700 rounded-[20%] dark:bg-white animate-spin-slow rotate-45 z-0" />
+        <a
+          href="/artists"
+          className="absolute inset-2 bg-primary dark:bg-black text-white flex items-center justify-center transform rotate-45 rounded-[10%] font-semibold text-sm z-10 hover:scale-105 transition-transform"
+        >
+          <span className="transform -rotate-45">Explore Artists</span>
+        </a>
       </div>
-
     </motion.div>
   )
 }

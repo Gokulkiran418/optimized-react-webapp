@@ -17,11 +17,7 @@ const CategoryCard = ({ title, image }: Props) => {
       transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
       whileHover={{
         scale: 1.05,
-        rotate: [0, 2, -2, 1, 0], // slight wobble rotation
-        transition: {
-          duration: 0.3,
-          ease: 'easeInOut',
-        },
+        transition: { duration: 0.3, ease: 'easeInOut' },
       }}
       className="rounded-lg overflow-hidden shadow border border-black dark:border-white"
     >
