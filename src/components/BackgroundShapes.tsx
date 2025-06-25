@@ -14,7 +14,7 @@ type ShapeProps = {
   delay: number
 }
 
-const Shape = memo(({ x, y, size, type, delay }: ShapeProps) => {
+const ShapeComponent = ({ x, y, size, type, delay }: ShapeProps) => {
   const baseClass =
     'absolute z-[-1] pointer-events-none transition-colors duration-300'
   const shapeClass =
@@ -49,7 +49,10 @@ const Shape = memo(({ x, y, size, type, delay }: ShapeProps) => {
       }}
     />
   )
-})
+}
+ShapeComponent.displayName = 'Shape'
+
+const Shape = memo(ShapeComponent)
 
 export default function BackgroundShapes({
   side = 'full',
